@@ -13,6 +13,8 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let numOfDays = 7       //1週間の日数
     let cellMargin : CGFloat = 2.0  //セルのマージン。セルのアイテムのマージンも別にあって紛らわしい。アイテムのマージンはゼロに設定し直してる
+    let dateManager = DateManager()
+    
 
     @IBOutlet weak var calenderCollectionView: UICollectionView!
     
@@ -33,41 +35,13 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
         return 2
     }
     
-    //データの個数（DataSourceを設定した場合に必要な項目）
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(section == 0){   //section:0は曜日を表示
-            return numOfDays
-        }else{
-            return 30        //section:1は日付を表示 　今の時点では適当な数字30日くらいなので30を入れる
-        }
-    }
-    
-    //データを返すメソッド（DataSourceを設定した場合に必要な項目）
-    //動作確認の為セルの背景を変える。曜日については表示する
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //コレクションビューから識別子「CalendarCell」のセルを取得する
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
-        if(indexPath.section == 0){             //曜日表示
-            cell.backgroundColor = UIColor.green
-            cell.textLabel.text = weekArray[indexPath.row]
-            
-        }else{                                  //日付表示
-            cell.backgroundColor = UIColor.white
-            cell.textLabel.text = ""
-        }
-        return cell
-    }
-    
     //セルをクリックしたら呼ばれる
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Num：\(indexPath.row) Section:\(indexPath.section)")
     }
-    /*
-     
-     セルのレイアウト設定
-     
-     */
+    
+    //セルのレイアウト設定
+
     //セルサイズの指定（UICollectionViewDelegateFlowLayoutで必須）　横幅いっぱいにセルが広がるようにしたい
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfMargin:CGFloat = 8.0
@@ -96,7 +70,8 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
         if(section == 0){   //section:0は曜日を表示
             return numOfDays
         }else{
-            return dateManager.daysAcquisition()       //section:1は日付を表示 　※セルの数は始点から終点までの日数
+            return dateManager.daysAcquisition()
+            //section:1は日付を表示 　※セルの数は始点から終点までの日数
         }
     }
     
@@ -117,6 +92,5 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
         }
         return cell
     }
+
 }
-
-
