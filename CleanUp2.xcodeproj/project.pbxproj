@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF5B661F1E704ED3002C3368 /* Cleanmark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DF5B661E1E704ED3002C3368 /* Cleanmark.jpg */; };
 		DFB95D591E631DAE00C157E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95D581E631DAE00C157E2 /* AppDelegate.swift */; };
 		DFB95D5B1E631DAE00C157E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFB95D5A1E631DAE00C157E2 /* ViewController.swift */; };
 		DFB95D5E1E631DAE00C157E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFB95D5C1E631DAE00C157E2 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF5B661E1E704ED3002C3368 /* Cleanmark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Cleanmark.jpg; sourceTree = "<group>"; };
 		DFB95D551E631DAE00C157E2 /* CleanUp2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanUp2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFB95D581E631DAE00C157E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFB95D5A1E631DAE00C157E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				DFB95D5F1E631DAE00C157E2 /* Assets.xcassets */,
 				DFB95D611E631DAE00C157E2 /* LaunchScreen.storyboard */,
 				DFB95D641E631DAE00C157E2 /* Info.plist */,
+				DF5B661E1E704ED3002C3368 /* Cleanmark.jpg */,
 			);
 			path = CleanUp2;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				DFB95D631E631DAE00C157E2 /* LaunchScreen.storyboard in Resources */,
 				DFB95D601E631DAE00C157E2 /* Assets.xcassets in Resources */,
+				DF5B661F1E704ED3002C3368 /* Cleanmark.jpg in Resources */,
 				DFB95D5E1E631DAE00C157E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +515,7 @@
 				DFB95D7F1E631DAE00C157E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFB95D801E631DAE00C157E2 /* Build configuration list for PBXNativeTarget "CleanUp2Tests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +524,7 @@
 				DFB95D821E631DAE00C157E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DFB95D831E631DAE00C157E2 /* Build configuration list for PBXNativeTarget "CleanUp2UITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +533,7 @@
 				DFB95D851E631DAE00C157E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
