@@ -16,12 +16,16 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
     let numOfDays = 7       //1週間の日数
     let cellMargin : CGFloat = 2.0  //セルのマージン。セルのアイテムのマージンも別にあって紛らわしい。アイテムのマージンはゼロに設定し直してる
     let dateManager = DateManager()
-    
+    let day = NSDate()
+    var cleanFlg:Int = 0
 
     @IBOutlet weak var calenderCollectionView: UICollectionView!
     @IBOutlet weak var headerTitle: UILabel!
     
     @IBOutlet weak var Today: UILabel!
+    
+    @IBOutlet weak var cleandayicon: UIImageView!
+    
     
     
     override func viewDidLoad() {
@@ -88,7 +92,7 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         //コレクションビューから識別子「CalendarCell」のセルを取得する
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath) as! CalendarCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CalendarCell", for: indexPath as IndexPath) as! CalendarCell
         
         //文字色　土曜日を青・日曜日を赤・それ以外はグレー
         if (indexPath.row % 7 == 0) {
@@ -99,18 +103,31 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
             cell.textLabel.textColor = UIColor.black
         }
         
+//        //indexPathをyyyy-MM-ddへ変換
+//        let yyyyMMddIndexPath = dateManager.nsIndexPathformatYYYYMMDD(indexPath: indexPath as NSIndexPath)
+//        
+//        //今日の年月日をyyyy-MM-ddへ変換
+//        let yyyyMMddToday = dateManager.formatYYYYMMDD(date: day)
+//        
         if(indexPath.section == 0){             //曜日表示
             cell.backgroundColor = UIColor.lightGray
             cell.textLabel.text = weekArray[indexPath.row]
             cell.textLabel.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
             
-        }else{                                  //日付表示
-            cell.backgroundColor = UIColor.white
-            cell.textLabel.text = dateManager.conversionDateFormat(index: indexPath.row) //Index番号から表示する日を求める     
+        }else{
+        if (cleanFlg == 1 && indexPath.row == 5){
+                cell.backgroundView = cleandayicon
+                cell.textLabel.text = dateManager.conversionDateFormat(index: indexPath.row) //Index番号から表
+                cleanFlg = 0
+                
+            }else{
+                cell.backgroundColor = UIColor.white
+                cell.textLabel.text = dateManager.conversionDateFormat(index: indexPath.row) //Index番号から表示する日を求める
+            }
         }
         return cell
     }
-    
+
     func getToday(format:String = "yyyy/MM/dd") -> String {
         
         let now = Date()
@@ -118,6 +135,7 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
         formatter.dateFormat = format
         return formatter.string(from: now as Date)
     }
+    
     
         //ボタン操作
     @IBAction func prevMonthBtn(_ sender: UIButton) {
@@ -133,8 +151,8 @@ class ViewController: UIViewController ,UICollectionViewDataSource,UICollectionV
     }
 
     @IBAction func pushCleanupBtn(_ sender: UIButton) {
-//        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//          
-//    }
-}
+        cleanFlg = 1
+        calenderCollectionView.reloadData()
+    }
+
 }

@@ -1,4 +1,4 @@
-//
+
 //  DateManager.swift
 //  CleanUp2
 //
@@ -14,8 +14,11 @@ class DateManager: NSObject {
     var biginDay = Date()
     var endDay = Date()
     var today = Date()
+    var currentMonthOfDates: [AnyObject] = []
+
     
     let calendar = Calendar.current
+    let formatter = DateFormatter()
     
     //月カレンダーの始点になる日を求める
     func BeginOfMonthCalender() -> Date{
@@ -61,15 +64,26 @@ class DateManager: NSObject {
         
         return calendar.component(.day, from: currentday!).description
     }
+    
     //今セレクトされているselectDayの年月をテキストで出力
     func CalendarHeader()->String{
-        let formatter = DateFormatter()
         formatter.dateFormat = "YYYY/MM"
-        
         return formatter.string(from: selectDay)
     }
-
-
+    
+    //今日の枠線表示の比較用年月日
+    func nsIndexPathformatYYYYMMDD(indexPath: NSIndexPath) -> String {
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: today)
+//        return formatter.string(from: currentMonthOfDates[indexPath.row] as! Date)
+    }
+    
+    //yyyyMMdd変換
+    func formatYYYYMMDD(date: NSDate) -> String {
+        formatter.dateFormat = "yyyy-MM-dd"
+        let yyyyMMdd = formatter.string(from: date as Date)
+        return yyyyMMdd
+    }
     
     /*
      表示月を変える操作

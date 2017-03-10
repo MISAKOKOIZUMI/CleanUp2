@@ -39,7 +39,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R74-Cp-Mpr">
                                         <rect key="frame" x="111" y="46" width="152" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -90,13 +90,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Clean up Today!"/>
+                                <connections>
+                                    <action selector="pushCleanupBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ym3-WX-ySb"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Cleanmark.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FWp-1Z-hHI">
+                                <rect key="frame" x="262" y="578" width="53" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="Today" destination="Bbv-lQ-EJG" id="ElR-yL-h46"/>
                         <outlet property="calenderCollectionView" destination="L9S-wD-k8K" id="UDn-U3-zKw"/>
+                        <outlet property="cleandayicon" destination="FWp-1Z-hHI" id="ZBe-tw-JG7"/>
                         <outlet property="headerTitle" destination="R74-Cp-Mpr" id="EJd-1k-VaX"/>
                     </connections>
                 </viewController>
@@ -105,4 +113,7 @@
             <point key="canvasLocation" x="-79.200000000000003" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Cleanmark.jpg" width="256" height="256"/>
+    </resources>
 </document>
